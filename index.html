@@ -1,2 +1,40 @@
-<h1>Project Identino</h1>
-<p>it's working!!!</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Identino</title>
+</head>
+
+<body>
+    <h1>Project Identino</h1>
+    <h3 id="indicator"></h3>
+    <h3>generated deeplink is:<br>
+        <a id="deeplink"></a>
+    </h3>
+</body>
+<script defer>
+    try {
+        const indicator = document.querySelector('#indicator');
+        const deeplink = document.querySelector('#deeplink');
+        const info = JSON.parse(
+            decodeURI(
+                new URL(location.href).search.substring(1)
+            )
+        );
+
+        indicator.innerHTML = `
+            phone number: ${info.phone}<br><br>
+            challenge: ${info.challenge}
+        `;
+
+        deeplink.setAttribute('href', `identino://open.my.app/${info.phone}/${info.challenge}`);
+        deeplink.innerHTML = `identino://open.my.app/${info.phone}/${info.challenge}`;
+
+    } catch (err) {
+        indicator.innerHTML = '❌ Failed to parse info from the URL here now. could be your query string wrong.';
+        window.location.go(-1);
+    }
+</script>
+
+</html>
