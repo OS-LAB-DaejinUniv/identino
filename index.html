@@ -18,6 +18,7 @@
         const indicator = document.querySelector('#indicator');
         const deeplink = document.querySelector('#deeplink');
         const info = JSON.parse(
+
             decodeURI(
                 new URL(location.href).search.substring(1)
             )
@@ -28,12 +29,13 @@
             challenge: ${info.challenge}
         `;
 
-        deeplink.setAttribute('href', `identino://open.my.app/${info.phone}/${info.challenge}`);
-        deeplink.innerHTML = `identino://open.my.app/${info.phone}/${info.challenge}`;
+        deeplink.setAttribute('href', `identino://sharefriend/${info.phone}/${info.challenge}`);
+        deeplink.innerHTML = `identino://sharefriend/${info.phone}/${info.challenge}`;
 
     } catch (err) {
         indicator.innerHTML = '❌ Failed to parse info from the URL here now. could be your query string wrong.';
         window.location.go(-1);
+        deeplink.innerHTML = `identino://sharefriend/testestest`;
     }
 </script>
 
