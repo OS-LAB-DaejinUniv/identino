@@ -8,6 +8,11 @@
         integrity="sha512-NzqTHTrO48HsIamogmIaVhTXoSgRF24Cn+ynrNYrFuKrY0AdDbmcNieiOHsQARS/r0Gax9VwV3/rVMHs3ipUlg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta property="og:title" content="발신번호 변작감지 서비스 Identino" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://raw.githubusercontent.com/OS-LAB-DaejinUniv/identino/main/ogimg.png" />
+    <meta property="og:description" content="친구 요청이 도착했어요!">
     <style>
         * {
             font-family: 'Pretendard';
@@ -91,7 +96,7 @@
                 Identino의 친구 등록 과정에서도 이 절차를 진행해요.</li>
         </ul>
     </section>
-    
+
 </body>
 <a id="deeplink">앱에서 친구로 등록하기</a>
 <script defer>
@@ -108,7 +113,7 @@
         // show message
         message.innerHTML = `
                 <p class="message">
-                    ${info.phone.substring(0,3)}-${info.phone.substring(3,7)}-${info.phone.substring(7,11)}님께서<br>
+                    ${info.phone.substring(0, 3)}-${info.phone.substring(3, 7)}-${info.phone.substring(7, 11)}님께서<br>
                     Identino 친구 요청을 보냈어요!
                 </p>
             `;
