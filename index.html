@@ -107,8 +107,8 @@
         const info = {
             phone: (() => {
                 const raw = new URL(location.href).searchParams.get('phone_num') || '';
-                if (raw.includes('+8210')) {
-                    return raw.replace('+8210', '010');
+                if (raw.includes(' 8210')) {
+                    return raw.replace(' 8210', '010');
                 } else {
                     return raw;
                 }
