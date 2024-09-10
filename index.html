@@ -104,11 +104,11 @@
         const indicator = document.querySelector('#indicator');
         const deeplink = document.querySelector('#deeplink');
         const message = document.querySelector('#message');
-        const info = JSON.parse(
-            atob( // decode base64
-                new URL(location.href).search.substring(1)
-            )
-        );
+        const info = {
+            phone: new URL(location.href).searchParams.get('phone_num') || '',
+            pubkey: new URL(location.href).searchParams.get('pubkey') || ''
+
+        };
 
         // show message
         message.innerHTML = `
@@ -118,12 +118,12 @@
                 </p>
             `;
 
-        deeplink.setAttribute('href', `identino://sharefriend/${info.phone}/${info.pubkey}`);
+        deeplink.setAttribute('href', `identino://sharefriend/?phone_num=${info.phone}&pubkey=${info.pubkey}`);
 
     } catch (err) {
         console.log('오류발생', err);
 
-        deeplink.setAttribute('href', `identino://sharefriend/1234/test`);
+        alert('잘못된 접근입니다.');
     }
 </script>
 
