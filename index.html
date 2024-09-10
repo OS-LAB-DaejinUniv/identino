@@ -105,7 +105,14 @@
         const deeplink = document.querySelector('#deeplink');
         const message = document.querySelector('#message');
         const info = {
-            phone: new URL(location.href).searchParams.get('phone_num') || '',
+            phone: (() => {
+                const raw = new URL(location.href).searchParams.get('phone_num') || '';
+                if (raw.includes('+8210')) {
+                    return raw.replace('+8210', '010');
+                } else {
+                    return raw;
+                }
+            })(),
             pubkey: new URL(location.href).searchParams.get('pubkey') || ''
 
         };
