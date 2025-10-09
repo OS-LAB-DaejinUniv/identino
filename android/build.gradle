@@ -1,0 +1,28 @@
+buildscript {
+    ext.kotlin_version = '1.8.22' // <- 모든 서브프로젝트가 공통으로 참조
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:8.13.0"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.buildDir = "../build"
+
+subprojects { subproject ->
+    subproject.buildDir = "${rootProject.buildDir}/${subproject.name}"
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}
